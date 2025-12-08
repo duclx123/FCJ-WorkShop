@@ -12,7 +12,7 @@ pre: " <b> 2. </b> "
 
 **Ngày:** 30/11/2025
 
-📥 **[Tải Đề Xuất Đầy Đủ (DOCX)](/static/files/Proposal.docx)**
+📥 <a href="https://duclx123.github.io/FCJ-WorkShop/files/Proposal.docx" download="Proposal.docx"><strong>Tải đề xuất đầy đủ (DOCX)</strong></a>
 
 ---
 
