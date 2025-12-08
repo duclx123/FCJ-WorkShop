@@ -8,11 +8,10 @@ pre: " <b> 1.9. </b> "
 
 ### Week 9 Objectives:
 
-* Learn how to design secure and scalable CI/CD pipelines.  
-* Build deployment workflows using **AWS CodePipeline**, **CodeBuild**, and **CodeDeploy**.  
-* Integrate GitHub or CodeCommit as the source provider.  
-* Automate application deployment to EC2 and Lambda.  
-* Strengthen pipeline security and add automated testing stages.  
+* Strengthen core frontend skills (React, UI flow, component architecture).  
+* Learn how frontend integrates with cloud-based backends (API Gateway, Lambda, DynamoDB).  
+* Understand environment variables, config management, and secure API communication.  
+* Build a stable local development environment aligned with AWS backend.
 
 ---
 
@@ -20,33 +19,32 @@ pre: " <b> 1.9. </b> "
 
 | Day | Task | Start Date | Completion Date | Reference Material |
 |-----|------|-------------|------------------|--------------------|
-| 2 | - Study concepts of **CI/CD pipelines** on AWS.<br>- Understand how CodePipeline orchestrates build → test → deploy.<br>- **Practice:**<br>&emsp;+ Create a simple CodePipeline with GitHub as the source.<br><br>→ Gain foundational understanding of CI/CD automation. | 03/11/2025 | 03/11/2025 | [AWS Study Group](https://000042.awsstudygroup.com/) |
-| 3 | - Learn **AWS CodeBuild** for building and testing applications.<br>- **Practice:**<br>&emsp;+ Write a `buildspec.yml` file.<br>&emsp;+ Run automated builds and unit tests.<br><br>→ Understand build automation and environment configuration. | 04/11/2025 | 04/11/2025 | [AWS Study Group](https://000043.awsstudygroup.com/) |
-| 4 | - Work with **AWS CodeDeploy** for deployment automation.<br>- **Practice:**<br>&emsp;+ Create an EC2 deployment group.<br>&emsp;+ Deploy application revisions using AppSpec.<br>&emsp;+ Test in-place and blue/green deployments.<br><br>→ Learn automated deployment to EC2. | 05/11/2025 | 05/11/2025 | [AWS Study Group](https://000044.awsstudygroup.com/) |
-| 5 | - Integrate **Lambda deployments** into CodePipeline.<br>- **Practice:**<br>&emsp;+ Deploy Lambda functions using CodeDeploy Lambda.<br>&emsp;+ Test linear and canary deployment strategies.<br><br>→ Implement CI/CD for serverless workloads. | 06/11/2025 | 06/11/2025 | [AWS Study Group](https://000045.awsstudygroup.com/) |
-| 6 | - Add pipeline security and monitoring.<br>- **Practice:**<br>&emsp;+ Enable CloudWatch and SNS notifications.<br>&emsp;+ Configure IAM permissions for pipeline stages.<br>&emsp;+ Add test/approval stages for safer deployments.<br><br>→ Improve CI/CD reliability and governance. | 07/11/2025 | 07/11/2025 | [AWS Study Group](https://000046.awsstudygroup.com/) |
+| 2 | - Review fundamental React patterns (hooks, state, props).<br>- Create reusable UI components.<br><br>→ Establish stable React development foundation. | 03/11/2025 | 03/11/2025 | React Docs |
+| 3 | - Learn how to connect frontend to backend via **API Gateway**.<br>- Practice sending GET/POST requests to public API endpoints.<br>- Handle loading, error, and success states properly.<br><br>→ Understand cloud API interaction. | 04/11/2025 | 04/11/2025 | AWS Study Group |
+| 4 | - Implement **environment variables** (.env.local, .env.production).<br>- Learn how Amplify / AWS hosting injects env files.<br>- Secure API keys and block exposure.<br><br>→ Improve backend integration security. | 05/11/2025 | 05/11/2025 | Amplify Docs |
+| 5 | - Study **CORS**, authentication headers, and request signing basics.<br>- Implement token-based protected requests.<br><br>→ Build secure communication between UI and AWS backend. | 06/11/2025 | 06/11/2025 | AWS Security Docs |
+| 6 | - Build a small demo page consuming AWS serverless API.<br>- Deploy frontend to temporary test environment using Amplify.<br><br>→ Achieve end-to-end cloud-connected frontend workflow. | 07/11/2025 | 07/11/2025 | Amplify Hosting Guide |
 
 ---
 
 ### Week 9 Achievements
 
-#### 1. CI/CD Pipeline Fundamentals
-- Understood the CI/CD workflow: source → build → test → deploy.  
-- Built the first automated **CodePipeline** integrated with GitHub.  
+#### 1. React Fundamentals Strengthened
+- Reinforced component-based design and state management.  
+- Developed reusable UI blocks for future integration.
 
-#### 2. Build Automation (CodeBuild)
-- Wrote a complete **buildspec.yml** for automated build and testing.  
-- Successfully executed builds in an isolated CodeBuild environment.  
+#### 2. Cloud API Communication
+- Successfully connected React frontend to API Gateway endpoints.  
+- Implemented loading/error handling patterns.
 
-#### 3. Deployment Automation (CodeDeploy)
-- Configured EC2 deployment groups and executed in-place & blue/green deployments.  
-- Understood the role of **AppSpec** and lifecycle hooks.  
+#### 3. Secure Environment Configs
+- Set up development & production env variables.  
+- Ensured sensitive keys are protected and not exposed in the bundle.
 
-#### 4. Serverless Deployment
-- Automated deployment of **Lambda functions** using CodeDeploy.  
-- Tested safe rollout strategies like **Linear** & **Canary** deployments.  
+#### 4. Secure Request Handling
+- Applied authentication headers and basic request protection.  
+- Understood CORS and cross-origin access control.
 
-#### 5. Pipeline Security & Governance
-- Added approval steps, IAM permissions, and fine-grained access controls.  
-- Monitored pipeline executions using CloudWatch & SNS alerts.  
-- Improved reliability and safety of the entire CI/CD workflow.
+#### 5. End-to-End Serverless Demo
+- Deployed a fully working cloud-connected UI via AWS Amplify.  
+- Verified successful communication with backend Lambda APIs.

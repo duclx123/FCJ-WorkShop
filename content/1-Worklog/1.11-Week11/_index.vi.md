@@ -1,59 +1,53 @@
 ---
 title: "Worklog Tuần 11"
-date: 2025-01-01
+date: 2025-11-17
 weight: 11
 chapter: false
 pre: " <b> 1.11. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+### Tiêu đề Tuần 11: **Tối Ưu Hiệu Năng Frontend trong Ứng Dụng Cloud**
 
-### Mục tiêu tuần 11:
+### Mục tiêu Tuần 11:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Tối ưu hiệu năng frontend khi tương tác với backend AWS.  
+* Áp dụng chiến lược caching nâng cao (client-side + API Gateway caching).  
+* Cải thiện độ phản hồi UI trong điều kiện độ trễ cao hoặc throttling.  
+* Tối ưu build frontend: bundling, tree-shaking, code splitting.  
+* Triển khai các kỹ thuật bảo mật cho frontend chạy trên hạ tầng cloud.  
+
+---
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
+| Ngày | Công việc | Bắt đầu | Hoàn thành | Nguồn tài liệu |
+|------|-----------|---------|-------------|--------------------|
+| 2 | - Tìm hiểu caching trình duyệt, ETags, Cache-Control.<br>- Dùng SWR/react-query để tối ưu fetch dữ liệu.<br>- Áp dụng client-side caching thực tế.<br><br>→ Giảm tải API và tăng tốc ứng dụng. | 17/11/2025 | 17/11/2025 | React Query Docs |
+| 3 | - Phân tích Lighthouse metrics.<br>- Tối ưu các tài nguyên render-blocking.<br>- Tối ưu hình ảnh và áp dụng lazy loading.<br><br>→ Cải thiện điểm hiệu năng web. | 18/11/2025 | 18/11/2025 | Web.Dev |
+| 4 | - Cấu hình API Gateway caching.<br>- Kiểm tra cold vs warm Lambda ảnh hưởng UI thế nào.<br>- Xây UI fallback cho trường hợp Lambda cold start.<br><br>→ Tối ưu UI theo hành vi cloud thực tế. | 19/11/2025 | 19/11/2025 | AWS API Gateway Docs |
+| 5 | - Tối ưu bundling: tree shaking, code splitting.<br>- Giảm kích thước bundle để tăng tốc load trang.<br><br>→ Tối ưu build production. | 20/11/2025 | 20/11/2025 | Webpack/Vite Docs |
+| 6 | - Ôn tập bảo mật: XSS, CSRF, lưu trữ token, enforce HTTPS.<br>- Thực hành best practices của AWS Cognito.<br>- Bảo vệ biến môi trường trong Amplify CI/CD.<br><br>→ Tăng cường bảo mật frontend trên cloud. | 21/11/2025 | 21/11/2025 | AWS Cognito Docs |
 
-### Kết quả đạt được tuần 11:
+---
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+### Thành tựu Tuần 11
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+#### 1. Chiến Lược Caching & Fetching Hiệu Quả  
+- Triển khai SWR/react-query để quản lý cache thông minh.  
+- Giảm đáng kể số lượng request nhờ deduplication và cache persistence.
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+#### 2. Hiệu Năng Ứng Dụng Tăng Đáng Kể  
+- Tăng điểm Lighthouse bằng cách loại bỏ render-blocking assets.  
+- Lazy loading và nén ảnh giúp UI tải mượt và nhanh hơn.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+#### 3. UI Tối Ưu cho Cloud  
+- Bật caching của API Gateway giúp latency thấp hơn đáng kể.  
+- Thêm fallback khi cold start Lambda để tránh UI “đơ”.
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
+#### 4. Build Production Nhẹ và Nhanh  
+- Sử dụng dynamic import + tree shaking giảm kích thước bundle.  
+- Thời gian tải trang đầu tiên nhanh hơn nhiều.
 
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+#### 5. Nâng Cao Bảo Mật Frontend  
+- Giảm nguy cơ XSS/CSRF với sanitizing + token handling chuẩn.  
+- Bảo mật biến môi trường trong Amplify và enforce HTTPS.

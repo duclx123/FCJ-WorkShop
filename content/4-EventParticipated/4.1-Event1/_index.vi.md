@@ -1,125 +1,78 @@
 ---
 title: "Event 1"
-date: 2025-01-01
+date: 2025-10-16
 weight: 1
 chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+# Báo Cáo Sau Sự Kiện: Reinventing DevSecOps with AWS Generative AI
 
-# Bài thu hoạch “GenAI-powered App-DB Modernization workshop”
+### Mục Tiêu Sự Kiện
 
-### Mục Đích Của Sự Kiện
+- Cung cấp góc nhìn chiến lược và thực tiễn về sự chuyển đổi mạnh mẽ khi **AI được áp dụng vào DevSecOps**.
+- Giới thiệu hệ sinh thái giải pháp AI toàn diện: tự động hóa quy trình, dự đoán rủi ro, kiểm thử bảo mật liên tục trong CI/CD và phản hồi nhanh trước mối đe dọa.
+- “Mổ xẻ” các **Case Studies** từ CMC Global và AWS để thấy cách những doanh nghiệp hàng đầu giải quyết thách thức vận hành – bảo mật với AI.
+- Định hướng sự nghiệp cho **DevSecOps Engineers**, nhấn mạnh nhu cầu nâng cao chuyên môn và học tập liên tục trong thị trường cạnh tranh.
 
-- Chia sẻ best practices trong thiết kế ứng dụng hiện đại
-- Giới thiệu phương pháp DDD và event-driven architecture
-- Hướng dẫn lựa chọn compute services phù hợp
-- Giới thiệu công cụ AI hỗ trợ development lifecycle
+### Diễn Giả
 
-### Danh Sách Diễn Giả
+- **Mr. Lê Thanh Đức** – Cloud Delivery Manager, CMC Global  
+- **Mr. Dư Quốc Thành** – Technical Leader, CMC Global  
+- **Khách mời đặc biệt: Mr. Văn Hoàng Kha** – Cloud Engineer, AWS Community Builder  
 
-- **Jignesh Shah** - Director, Open Source Databases
-- **Erica Liu** - Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** - Assc. Specialist SA, Serverless Amazon Web Services
+### Những Điểm Nổi Bật
 
-### Nội Dung Nổi Bật
+#### Giải Pháp Tích Hợp AI Toàn Diện Trong DevSecOps
 
-#### Đưa ra các ảnh hưởng tiêu cực của kiến trúc ứng dụng cũ
+- Tự động hóa quy trình, dự đoán rủi ro thông minh.
+- Kiểm thử bảo mật liên tục trong pipeline CI/CD.
+- Tăng tốc khả năng phản hồi trước các mối đe dọa.
 
-- Thời gian release sản phẩm lâu → Mất doanh thu/bỏ lỡ cơ hội
-- Hoạt động kém hiệu quả → Mất năng suất, tốn kém chi phí
-- Không tuân thủ các quy định về bảo mật → Mất an ninh, uy tín
+#### Case Studies Và Bài Học Thực Tiễn
 
-#### Chuyển đổi sang kiến trúc ứng dụng mới - Microservice Architecture
+- Phân tích trực tiếp các dự án từ **CMC Global** và **AWS**, cho thấy cách AI hỗ trợ vận hành và bảo mật hệ thống.
+- Tìm hiểu cách AI giúp loại bỏ các “nút thắt” thủ công như gatekeeper cứng nhắc, trực 24/7, hay quy trình phản hồi tốn kém.
 
-Chuyển đổi thành hệ thống modular – từng chức năng là một **dịch vụ độc lập** giao tiếp với nhau qua **sự kiện** với 3 trụ cột cốt lõi:
+#### Định Hướng Nghề Nghiệp
 
-- **Queue Management**: Xử lý tác vụ bất đồng bộ
-- **Caching Strategy:** Tối ưu performance
-- **Message Handling:** Giao tiếp linh hoạt giữa services
+- Nhấn mạnh tầm quan trọng của việc cập nhật xu hướng và tăng cường chuyên môn để chinh phục các dự án DevSecOps phức tạp.
 
-#### Domain-Driven Design (DDD)
+### Key Takeaways
 
-- **Phương pháp 4 bước**: Xác định domain events → sắp xếp timeline → identify actors → xác định bounded contexts
-- **Case study bookstore**: Minh họa cách áp dụng DDD thực tế
-- **Context mapping**: 7 patterns tích hợp bounded contexts
+#### Tự Động Hóa Và Tích Hợp AI
 
-#### Event-Driven Architecture
+- Hiểu rõ mô hình **AI Integration** trong DevSecOps: tự động hóa, dự đoán rủi ro, kiểm thử liên tục.
+- Nắm được cách AI hỗ trợ **phản hồi mối đe dọa nhanh và hiệu quả**.
 
-- **3 patterns tích hợp**: Publish/Subscribe, Point-to-point, Streaming
-- **Lợi ích**: Loose coupling, scalability, resilience
-- **So sánh sync vs async**: Hiểu rõ trade-offs (sự đánh đổi)
+#### Tư Duy DevSecOps Hiện Đại
 
-#### Compute Evolution
+- Nhận thức sâu sắc hơn về việc **tích hợp bảo mật xuyên suốt SDLC**.
+- Làm quen với các công cụ phổ biến: **Jenkins** (CI/CD), **SonarQube** (SAST), **OWASP ZAP** (DAST) và **Terraform** (IaC).
 
-- **Shared Responsibility Model**: Từ EC2 → ECS → Fargate → Lambda
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value
-- **Functions vs Containers**: Criteria lựa chọn phù hợp
+#### Công Cụ Generative AI
 
-#### Amazon Q Developer
+- Khám phá **Amazon Q Developer** – công cụ AI hỗ trợ lập trình, tạo code, kiểm thử và dò lỗi bảo mật trên AWS.
 
-- **SDLC automation**: Từ planning đến maintenance
-- **Code transformation**: Java upgrade, .NET modernization
-- **AWS Transform agents**: VMware, Mainframe, .NET migration
+### Ứng Dụng Vào Công Việc (Từ Worklog Tuần 6)
 
-### Những Gì Học Được
+- Áp dụng tư duy DevSecOps vào dự án hiện tại, đặc biệt là đưa bảo mật vào các giai đoạn đầu phát triển.
+- Tìm hiểu **Amazon Q Developer** để hỗ trợ tạo code và kiểm thử bảo mật.
+- Nghiên cứu các công cụ CI/CD và SAST/DAST để tích hợp vào roadmap dự án.
 
-#### Tư Duy Thiết Kế
+### Trải Nghiệm Sự Kiện
 
-- **Business-first approach**: Luôn bắt đầu từ business domain, không phải technology
-- **Ubiquitous language**: Importance của common vocabulary giữa business và tech teams
-- **Bounded contexts**: Cách identify và manage complexity trong large systems
+#### Góc Nhìn Từ Các Chuyên Gia
+- Lắng nghe những chia sẻ chiến lược từ các diễn giả của CMC Global và AWS.
+- Qua Case Studies, hiểu rõ cách AI hỗ trợ doanh nghiệp xử lý thách thức vận hành và bảo mật quy mô lớn.
 
-#### Kiến Trúc Kỹ Thuật
+#### Giá Trị AI Trong DevSecOps
+- Nhìn thấy tiềm năng AI trong việc **loại bỏ những công việc thủ công**, giảm tải áp lực vận hành và tăng hiệu quả tự động hóa.
+- Nắm được cách tích hợp AI một cách toàn diện vào quy trình DevSecOps.
 
-- **Event storming technique**: Phương pháp thực tế để mô hình hóa quy trình kinh doanh
-- Sử dụng **Event-driven communication** thay vì synchronous calls
-- **Integration patterns**: Hiểu khi nào dùng sync, async, pub/sub, streaming
-- **Compute spectrum**: Criteria chọn từ VM → containers → serverless
+#### Định Hướng Cá Nhân
+- Nhận ra tầm quan trọng của việc học liên tục và theo kịp xu hướng.
+- Được giải đáp trực tiếp các câu hỏi về cách áp dụng AI vào dự án của mình.
 
-#### Chiến Lược Hiện Đại Hóa
-
-- **Phased approach**: Không rush, phải có roadmap rõ ràng
-- **7Rs framework**: Nhiều con đường khác nhau tùy thuộc vào đặc điểm của mỗi ứng dụng
-- **ROI measurement**: Cost reduction + business agility
-
-### Ứng Dụng Vào Công Việc
-
-- **Áp dụng DDD** cho project hiện tại: Event storming sessions với business team
-- **Refactor microservices**: Sử dụng bounded contexts để identify service boundaries
-- **Implement event-driven patterns**: Thay thế một số sync calls bằng async messaging
-- **Serverless adoption**: Pilot AWS Lambda cho một số use cases phù hợp
-- **Try Amazon Q Developer**: Integrate vào development workflow để boost productivity
-
-### Trải nghiệm trong event
-
-Tham gia workshop **“GenAI-powered App-DB Modernization”** là một trải nghiệm rất bổ ích, giúp tôi có cái nhìn toàn diện về cách hiện đại hóa ứng dụng và cơ sở dữ liệu bằng các phương pháp và công cụ hiện đại. Một số trải nghiệm nổi bật:
-
-#### Học hỏi từ các diễn giả có chuyên môn cao
-- Các diễn giả đến từ AWS và các tổ chức công nghệ lớn đã chia sẻ **best practices** trong thiết kế ứng dụng hiện đại.
-- Qua các case study thực tế, tôi hiểu rõ hơn cách áp dụng **Domain-Driven Design (DDD)** và **Event-Driven Architecture** vào các project lớn.
-
-#### Trải nghiệm kỹ thuật thực tế
-- Tham gia các phiên trình bày về **event storming** giúp tôi hình dung cách **mô hình hóa quy trình kinh doanh** thành các domain events.
-- Học cách **phân tách microservices** và xác định **bounded contexts** để quản lý sự phức tạp của hệ thống lớn.
-- Hiểu rõ trade-offs giữa **synchronous và asynchronous communication** cũng như các pattern tích hợp như **pub/sub, point-to-point, streaming**.
-
-#### Ứng dụng công cụ hiện đại
-- Trực tiếp tìm hiểu về **Amazon Q Developer**, công cụ AI hỗ trợ SDLC từ lập kế hoạch đến maintenance.
-- Học cách **tự động hóa code transformation** và pilot serverless với **AWS Lambda**, từ đó nâng cao năng suất phát triển.
-
-#### Kết nối và trao đổi
-- Workshop tạo cơ hội trao đổi trực tiếp với các chuyên gia, đồng nghiệp và team business, giúp **nâng cao ngôn ngữ chung (ubiquitous language)** giữa business và tech.
-- Qua các ví dụ thực tế, tôi nhận ra tầm quan trọng của **business-first approach**, luôn bắt đầu từ nhu cầu kinh doanh thay vì chỉ tập trung vào công nghệ.
-
-#### Bài học rút ra
-- Việc áp dụng DDD và event-driven patterns giúp giảm **coupling**, tăng **scalability** và **resilience** cho hệ thống.
-- Chiến lược hiện đại hóa cần **phased approach** và đo lường **ROI**, không nên vội vàng chuyển đổi toàn bộ hệ thống.
-- Các công cụ AI như Amazon Q Developer có thể **boost productivity** nếu được tích hợp vào workflow phát triển hiện tại.
-
-#### Một số hình ảnh khi tham gia sự kiện
-* Thêm các hình ảnh của các bạn tại đây
-> Tổng thể, sự kiện không chỉ cung cấp kiến thức kỹ thuật mà còn giúp tôi thay đổi cách tư duy về thiết kế ứng dụng, hiện đại hóa hệ thống và phối hợp hiệu quả hơn giữa các team.
+### Kết Luận
+Sự kiện mang lại nhiều góc nhìn giá trị về tương lai của DevSecOps trong kỷ nguyên AI, đồng thời giúp định hướng rõ ràng cách ứng dụng các công cụ như Amazon Q Developer để **tối ưu năng suất** và **củng cố bảo mật** cho quy trình phát triển.

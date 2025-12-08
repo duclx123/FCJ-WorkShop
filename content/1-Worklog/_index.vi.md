@@ -27,10 +27,10 @@ Thông thường và cũng là tiêu chuẩn, một worklog được thực hi�
 
 **Tuần 8:** [Mạng Nâng Cao và Hybrid Cloud](1.8-week8/)
 
-**Tuần 9:** [Làm công việc I...](1.9-week9/)
+**Tuần 9:** [Tích Hợp Kiến Trúc Frontend với Dịch Vụ AWS](1.9-week9/)
 
-**Tuần 10:** [Làm công việc L...](1.10-week10/)
+**Tuần 10:** [Tối Ưu Hiệu Suất Frontend và Phân Phối Đám Mây](1.10-week10/)
 
-**Tuần 11:** [Làm công việc M...](1.11-week11/)
+**Tuần 11:** [Phát Triển Frontend An Toàn và Xác Thực Dựa Trên Cloud](1.11-week11/)
 
-**Tuần 12:** [Làm công việc N...](1.12-week12/)
+**Tuần 12:** [Triển Khai Frontend Nâng Cao và Quy Trình CI/CD](1.12-week12/)

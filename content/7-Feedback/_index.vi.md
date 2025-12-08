@@ -5,40 +5,55 @@ weight: 7
 chapter: false
 pre: " <b> 7. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
->Tại đây bạn có thể tự do đóng góp ý kiến cá nhân về những trải nghiệm khi tham gia chương trình First Cloud Journey, giúp team FCJ cải thiện những vấn đề còn thiếu sót dựa trên các hạng mục sau:
 
 ### Đánh giá chung
 
-**1. Môi trường làm việc**  
-Môi trường làm việc rất thân thiện và cởi mở. Các thành viên trong FCJ luôn sẵn sàng hỗ trợ khi mình gặp khó khăn, kể cả ngoài giờ làm việc. Không gian làm việc gọn gàng, thoải mái, giúp mình tập trung tốt hơn. Tuy nhiên, mình nghĩ có thể bổ sung thêm một số buổi giao lưu hoặc team bonding để mọi người hiểu nhau hơn.
+**1. Môi trường Làm việc**
 
-**2. Sự hỗ trợ của mentor / team admin**  
-Mentor hướng dẫn rất chi tiết, giải thích rõ ràng khi mình chưa hiểu và luôn khuyến khích mình đặt câu hỏi. Team admin hỗ trợ các thủ tục, tài liệu và tạo điều kiện để mình làm việc thuận lợi. Mình đánh giá cao việc mentor cho phép mình thử và tự xử lý vấn đề thay vì chỉ đưa đáp án.
+Môi trường làm việc chuyên nghiệp, hỗ trợ và rất thuận lợi cho việc học tập. Các thành viên trong nhóm luôn giữ thái độ thân thiện và dễ gần, sẵn sàng hỗ trợ khi cần. Không gian làm việc được sắp xếp gọn gàng và thoải mái, góp phần đáng kể vào năng suất. Tuy nhiên, các hoạt động xây dựng nhóm hoặc giao lưu bổ sung có thể giúp tăng cường sự gắn kết nội bộ hơn nữa.
 
-**3. Sự phù hợp giữa công việc và chuyên ngành học**  
-Công việc mình được giao phù hợp với kiến thức mình đã học ở trường, đồng thời mở rộng thêm những mảng mới mà mình chưa từng được tiếp cận. Nhờ vậy, mình vừa củng cố kiến thức nền tảng, vừa học thêm kỹ năng thực tế.
+**2. Hỗ trợ từ Người hướng dẫn/Quản trị viên Nhóm**
 
-**4. Cơ hội học hỏi & phát triển kỹ năng**  
-Trong quá trình thực tập, mình học được nhiều kỹ năng mới như sử dụng công cụ quản lý dự án, kỹ năng làm việc nhóm, và cả cách giao tiếp chuyên nghiệp trong môi trường công ty. Mentor cũng chia sẻ nhiều kinh nghiệm thực tế giúp mình định hướng tốt hơn cho sự nghiệp.
+Người hướng dẫn của tôi đã cung cấp hướng dẫn rõ ràng, có cấu trúc và khuyến khích tôi tự tìm hiểu các giải pháp trước khi đưa ra câu trả lời trực tiếp. Đội ngũ quản trị đã hỗ trợ kịp thời về tài liệu và quy trình hành chính, đảm bảo quy trình làm việc diễn ra suôn sẻ. Sự hướng dẫn tập thể của họ đóng một vai trò thiết yếu trong quá trình phát triển chuyên môn của tôi trong thời gian thực tập.
 
-**5. Văn hóa & tinh thần đồng đội**  
-Văn hóa công ty rất tích cực: mọi người tôn trọng lẫn nhau, làm việc nghiêm túc nhưng vẫn vui vẻ. Khi có dự án gấp, mọi người cùng nhau cố gắng, hỗ trợ không phân biệt vị trí. Điều này giúp mình cảm thấy mình là một phần của tập thể, dù chỉ là thực tập sinh.
+**3. Sự liên quan giữa công việc và chuyên ngành**
 
-**6. Chính sách / phúc lợi cho thực tập sinh**  
-Công ty có hỗ trợ phụ cấp thực tập và tạo điều kiện về thời gian linh hoạt khi cần thiết. Ngoài ra, việc được tham gia các buổi đào tạo nội bộ là một điểm cộng lớn.
+Các nhiệm vụ được giao rất phù hợp với kiến ​​thức tôi đã học ở trường đại học, đồng thời giúp tôi tiếp cận với những khái niệm mới liên quan đến thực tiễn công việc. Sự cân bằng này cho phép tôi củng cố nền tảng học thuật cốt lõi đồng thời mở rộng chuyên môn thực tế.
 
+**4. Cơ hội học tập và phát triển kỹ năng**
+
+Trong suốt thời gian thực tập, tôi đã tích lũy được kinh nghiệm quý báu về các công cụ điều phối dự án, quy trình làm việc hợp tác và giao tiếp chuyên nghiệp. Người hướng dẫn của tôi cũng chia sẻ những hiểu biết thực tế từ các tình huống thực tế trong ngành, giúp tôi hiểu rõ hơn về con đường sự nghiệp tiềm năng và các mục tiêu phát triển dài hạn.
+
+**5. Văn hóa Công ty & Tinh thần Đồng đội**
+
+Công ty đề cao một văn hóa tích cực và tôn trọng. Các thành viên trong nhóm làm việc chăm chỉ nhưng vẫn duy trì bầu không khí thân thiện. Trong các nhiệm vụ ưu tiên cao, nhóm hợp tác hiệu quả bất kể vị trí hay thâm niên. Điều này tạo cho tôi cảm giác hòa nhập và gắn bó mạnh mẽ với tư cách là một thực tập sinh.
+
+**6. Chính sách/Quyền lợi Thực tập**
+
+Các chính sách thực tập công bằng và hỗ trợ, cung cấp các khoản phụ cấp và sắp xếp công việc linh hoạt khi cần thiết. Cơ hội tham gia các buổi đào tạo nội bộ đã mang lại giá trị đáng kể cho toàn bộ trải nghiệm.
+
+---
 
 ### Một số câu hỏi khác
-- Điều bạn **hài lòng nhất** trong thời gian thực tập?  
-- Điều bạn nghĩ công ty **cần cải thiện** cho các thực tập sinh sau?  
-- Nếu giới thiệu cho bạn bè, bạn có **khuyên họ thực tập ở đây không**? Vì sao?  
 
+**1. Bạn thấy điều gì làm bạn hài lòng nhất trong thời gian thực tập?**  
+Điều làm bạn hài lòng nhất trong thời gian thực tập là cơ hội được làm việc trong một môi trường chuyên nghiệp và hỗ trợ cao. Tôi đặc biệt trân trọng sự hướng dẫn của người hướng dẫn, người luôn đưa ra định hướng rõ ràng, đồng thời vẫn tạo điều kiện cho tôi phát triển kỹ năng giải quyết vấn đề một cách độc lập. Sự cân bằng này đã giúp tôi phát triển cả về mặt chuyên môn lẫn chuyên môn.
 
-### Đề xuất & mong muốn
-- Bạn có đề xuất gì để cải thiện trải nghiệm trong kỳ thực tập?  
-- Bạn có muốn tiếp tục chương trình này trong tương lai?
-- Góp ý khác (tự do chia sẻ):
+**2. Công ty cần cải thiện những khía cạnh nào cho các thực tập sinh tương lai?**  
+Không có ý kiến đóng góp nào khác ngoài những điểm đã đề cập ở trên.
+
+**3. Bạn có muốn giới thiệu chương trình thực tập này cho bạn bè không? Tại sao có hoặc tại sao không?**  
+Có, tôi thực sự muốn giới thiệu chương trình thực tập này. Chương trình mang đến một trải nghiệm toàn diện, kết hợp đào tạo kỹ thuật, thực hành và văn hóa làm việc tích cực. Thực tập sinh nhận được sự hướng dẫn tận tình và có cơ hội học tập ý nghĩa, thực sự hỗ trợ cho sự phát triển nghề nghiệp của họ.
+
+***
+
+### Đề xuất & Kỳ vọng
+
+**Bạn có đề xuất nào để nâng cao trải nghiệm thực tập không?**  
+Không có ý kiến bổ sung nào ngoài những điểm đã nêu ở trên.
+
+**Bạn có muốn tiếp tục tham gia chương trình trong tương lai không?**  
+Không có ý kiến bổ sung nào ngoài những điểm đã nêu ở trên.
+
+**Có ý kiến bổ sung nào không:**  
+Không có ý kiến bổ sung nào.

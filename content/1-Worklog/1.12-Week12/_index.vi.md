@@ -1,58 +1,51 @@
 ---
 title: "Worklog Tuần 12"
-date: 2025-01-01
+date: 2025-11-24
 weight: 12
 chapter: false
-pre: " <b> 1.12 </b> "
+pre: " <b> 1.12. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
-### Mục tiêu tuần 12:
+### Mục tiêu Tuần 12:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Tìm hiểu quy trình triển khai frontend tự động trên AWS Amplify hoặc S3 + CloudFront.  
+* Thiết lập CI/CD để đảm bảo build và deploy luôn ổn định, nhất quán.  
+* Áp dụng cấu hình đa môi trường (dev / staging / prod) cho frontend.  
+* Tăng độ tin cậy hệ thống thông qua monitoring, ghi log và kế hoạch rollback.  
+* Hoàn thiện tích hợp frontend với toàn bộ backend AWS trước khi đưa vào production.  
+
+---
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
+| Ngày | Công việc | Bắt đầu | Hoàn thành | Nguồn tài liệu |
+|------|-----------|---------|-------------|----------|
+| 2 | - Tìm hiểu cơ chế hoạt động của AWS Amplify Hosting.<br>- Thiết lập môi trường dev/staging/prod.<br>- Cấu hình biến môi trường.<br><br>→ Tạo quy trình deploy nhất quán. | 24/11/2025 | 24/11/2025 | Amplify Hosting Docs |
+| 3 | - Tạo pipeline CI/CD bằng Amplify hoặc GitHub Actions.<br>- Tự động build, test, deploy.<br>- Thêm quy tắc deploy theo branch.<br><br>→ Tự động hóa toàn bộ vòng đời triển khai. | 25/11/2025 | 25/11/2025 | GitHub Actions Docs |
+| 4 | - Triển khai frontend lên S3 + CloudFront.<br>- Cấu hình cache, invalidation, error page, redirect.<br><br>→ Nắm vững nhiều mô hình hosting khác nhau. | 26/11/2025 | 26/11/2025 | CloudFront Docs |
+| 5 | - Bật monitoring bằng CloudWatch + Amplify logging.<br>- Phân tích lỗi, thời gian build, và hiệu năng.<br>- Fix các vấn đề gây mất ổn định khi deploy.<br><br>→ Cải thiện chất lượng vận hành. | 27/11/2025 | 27/11/2025 | CloudWatch Docs |
+| 6 | - Kiểm thử full workflow: Frontend → API Gateway → Lambda → DynamoDB.<br>- Test trên cả 3 môi trường.<br>- Viết tài liệu quy trình deploy + rollback.<br><br>→ Đạt trạng thái sẵn sàng cho production. | 28/11/2025 | 28/11/2025 | Internal Docs |
 
-### Kết quả đạt được tuần 12:
+---
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+### Thành tựu Tuần 12
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+#### 1. Thiết lập đa môi trường hoàn chỉnh  
+- Thiết lập dev/staging/prod trên Amplify thành công.  
+- Chuẩn hóa biến môi trường giúp build ổn định và an toàn.
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+#### 2. CI/CD Tự động hóa hoàn toàn  
+- Pipeline GitHub Actions + Amplify hoạt động ổn định.  
+- Tự động deploy theo branch, giảm lỗi do thao tác thủ công.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+#### 3. Hosting nâng cao với S3 + CloudFront  
+- Triển khai bản production thay thế bằng CloudFront để tối ưu hiệu năng.  
+- Cấu hình caching và invalidation đúng chuẩn CDN.
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
+#### 4. Theo dõi & Tối ưu Độ Tin Cậy  
+- Kích hoạt CloudWatch để theo dõi build, log, và runtime.  
+- Phát hiện và xử lý lỗi build, giảm downtime deploy.
 
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+#### 5. Kiểm thử tích hợp toàn hệ thống  
+- Kiểm thử thành công full pipeline từ frontend tới toàn bộ backend AWS.  
+- Ghi lại tài liệu deploy, test, rollback để nhóm dễ dàng tiếp tục phát triển.  
