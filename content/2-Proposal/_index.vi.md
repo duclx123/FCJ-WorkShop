@@ -188,7 +188,7 @@ Dưới đây là mô tả các thành phần chính và cách dữ liệu chả
 **7. Deployment & Infrastructure Management**
 
 - **AWS CDK:** Được developers sử dụng để định nghĩa và provision toàn bộ hạ tầng qua CloudFormation templates, đảm bảo triển khai nhất quán, có thể tái tạo và version-controlled
-![Diagram](/static/images/2-Proposal/FsocialArchitecture.png)
+![Diagram](/images/2-Proposal/FsocialArchitecture.png)
 
 ## 2.2 Kế hoạch Kỹ thuật
 

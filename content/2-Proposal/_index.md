@@ -324,7 +324,7 @@ Handles system-level alerts and asynchronous messaging.
 Used by developers to define and provision the entire infrastructure
 via CloudFormation templates.  
 Ensures consistent, reproducible, version-controlled deployments.
-![Diagram](/static/images/2-Proposal/FsocialArchitecture.png)
+![Diagram](/images/2-Proposal/FsocialArchitecture.png)
 
 
 ## 2.2 Technical Plan
