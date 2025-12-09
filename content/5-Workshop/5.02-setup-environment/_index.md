@@ -8,7 +8,7 @@ pre: " <b> 5.02. </b> "
 
 #### Overview
 
-Trong bước này, bạn sẽ cài đặt tất cả các công cụ cần thiết để phát triển và deploy ứng dụng EveryoneCook.
+In this step, you will install all the necessary tools to develop and deploy the EveryoneCook application.
 
 #### Required Tools
 
