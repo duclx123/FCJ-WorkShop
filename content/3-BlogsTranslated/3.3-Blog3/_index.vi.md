@@ -1,127 +1,161 @@
 ---
 title: "Blog 3"
 date: 2025-01-01
-weight: 1
+weight: 3
 chapter: false
 pre: " <b> 3.3. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
-# Bắt đầu với healthcare data lakes: Sử dụng microservices
-
-Các data lake có thể giúp các bệnh viện và cơ sở y tế chuyển dữ liệu thành những thông tin chi tiết về doanh nghiệp và duy trì hoạt động kinh doanh liên tục, đồng thời bảo vệ quyền riêng tư của bệnh nhân. **Data lake** là một kho lưu trữ tập trung, được quản lý và bảo mật để lưu trữ tất cả dữ liệu của bạn, cả ở dạng ban đầu và đã xử lý để phân tích. data lake cho phép bạn chia nhỏ các kho chứa dữ liệu và kết hợp các loại phân tích khác nhau để có được thông tin chi tiết và đưa ra các quyết định kinh doanh tốt hơn.
-
-Bài đăng trên blog này là một phần của loạt bài lớn hơn về việc bắt đầu cài đặt data lake dành cho lĩnh vực y tế. Trong bài đăng blog cuối cùng của tôi trong loạt bài, *“Bắt đầu với data lake dành cho lĩnh vực y tế: Đào sâu vào Amazon Cognito”*, tôi tập trung vào các chi tiết cụ thể của việc sử dụng Amazon Cognito và Attribute Based Access Control (ABAC) để xác thực và ủy quyền người dùng trong giải pháp data lake y tế. Trong blog này, tôi trình bày chi tiết cách giải pháp đã phát triển ở cấp độ cơ bản, bao gồm các quyết định thiết kế mà tôi đã đưa ra và các tính năng bổ sung được sử dụng. Bạn có thể truy cập các code samples cho giải pháp tại Git repo này để tham khảo.
+# Mở rộng AWS Fault Injection Service trong tổ chức của bạn bằng Account Controls  
+**Tác giả:** Dylan Reed, Jason Brown, Venkata Moparthi, Isael Pimentel, Satish Kumar  
+**Ngày đăng:** 11/04/2025  
+**Chuyên mục:** AWS Fault Injection Service (FIS), AWS Resilience Hub (ARH), Management Tools, Resilience
 
 ---
 
-## Hướng dẫn kiến trúc
+## Giới thiệu
 
-Thay đổi chính kể từ lần trình bày cuối cùng của kiến trúc tổng thể là việc tách dịch vụ đơn lẻ thành một tập hợp các dịch vụ nhỏ để cải thiện khả năng bảo trì và tính linh hoạt. Việc tích hợp một lượng lớn dữ liệu y tế khác nhau thường yêu cầu các trình kết nối chuyên biệt cho từng định dạng; bằng cách giữ chúng được đóng gói riêng biệt với microservices, chúng ta có thể thêm, xóa và sửa đổi từng trình kết nối mà không ảnh hưởng đến những kết nối khác. Các microservices được kết nối rời thông qua tin nhắn publish/subscribe tập trung trong cái mà tôi gọi là “pub/sub hub”.
+AWS Fault Injection Service (FIS) giúp bạn áp dụng **chaos engineering** ở quy mô lớn trong môi trường AWS. Chaos engineering là việc chủ động tạo ra các lỗi có kiểm soát để đánh giá khả năng chịu lỗi và sự phục hồi của hệ thống, giúp nâng cao trải nghiệm người dùng.
 
-Giải pháp này đại diện cho những gì tôi sẽ coi là một lần lặp nước rút hợp lý khác từ last post của tôi. Phạm vi vẫn được giới hạn trong việc nhập và phân tích cú pháp đơn giản của các **HL7v2 messages** được định dạng theo **Quy tắc mã hóa 7 (ER7)** thông qua giao diện REST.
+Cách tiếp cận chủ động này giúp bạn tự tin hơn vào khả năng phản ứng của hệ thống khi xảy ra sự cố thực tế trong môi trường sản xuất.
 
-**Kiến trúc giải pháp bây giờ như sau:**
+Bạn có thể dùng các thí nghiệm FIS để tạo ra các lỗi như:
 
-> *Hình 1. Kiến trúc tổng thể; những ô màu thể hiện những dịch vụ riêng biệt.*
+- Mất điện trong Availability Zone (AZ),  
+- Mất kết nối giữa các Region,  
+- Gián đoạn mạng tạm thời,
 
----
-
-Mặc dù thuật ngữ *microservices* có một số sự mơ hồ cố hữu, một số đặc điểm là chung:  
-- Chúng nhỏ, tự chủ, kết hợp rời rạc  
-- Có thể tái sử dụng, giao tiếp thông qua giao diện được xác định rõ  
-- Chuyên biệt để giải quyết một việc  
-- Thường được triển khai trong **event-driven architecture**
-
-Khi xác định vị trí tạo ranh giới giữa các microservices, cần cân nhắc:  
-- **Nội tại**: công nghệ được sử dụng, hiệu suất, độ tin cậy, khả năng mở rộng  
-- **Bên ngoài**: chức năng phụ thuộc, tần suất thay đổi, khả năng tái sử dụng  
-- **Con người**: quyền sở hữu nhóm, quản lý *cognitive load*
+và quan sát ứng dụng phản ứng ra sao.
 
 ---
 
-## Lựa chọn công nghệ và phạm vi giao tiếp
+## Khi thực hiện thí nghiệm với lỗi mạng
 
-| Phạm vi giao tiếp                        | Các công nghệ / mô hình cần xem xét                                                        |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Trong một microservice                   | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Giữa các microservices trong một dịch vụ | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Giữa các dịch vụ                         | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+Trong các thí nghiệm liên quan đến **network fault** như:
 
----
+- AZ power interruption  
+- Region isolation  
 
-## The pub/sub hub
+bạn cần quyền thay đổi tạm thời cấu hình mạng (ví dụ: `ec2:CreateNetworkAcl`).
 
-Việc sử dụng kiến trúc **hub-and-spoke** (hay message broker) hoạt động tốt với một số lượng nhỏ các microservices liên quan chặt chẽ.  
-- Mỗi microservice chỉ phụ thuộc vào *hub*  
-- Kết nối giữa các microservice chỉ giới hạn ở nội dung của message được xuất  
-- Giảm số lượng synchronous calls vì pub/sub là *push* không đồng bộ một chiều
-
-Nhược điểm: cần **phối hợp và giám sát** để tránh microservice xử lý nhầm message.
+Điều này có thể khó khăn nếu tổ chức của bạn sử dụng **mạng tập trung (centralized networking model)**, nơi một nhóm mạng chuyên trách sở hữu và vận hành các tài khoản mạng. Khi đó, các tài khoản ứng dụng có thể không chạy được các hành động mạng trong FIS.
 
 ---
 
-## Core microservice
+## Chuỗi bài viết
 
-Cung cấp dữ liệu nền tảng và lớp truyền thông, gồm:  
-- **Amazon S3** bucket cho dữ liệu  
-- **Amazon DynamoDB** cho danh mục dữ liệu  
-- **AWS Lambda** để ghi message vào data lake và danh mục  
-- **Amazon SNS** topic làm *hub*  
-- **Amazon S3** bucket cho artifacts như mã Lambda
+Chuỗi ba phần này hướng dẫn cách xác định **safety guardrails** bằng:
 
-> Chỉ cho phép truy cập ghi gián tiếp vào data lake qua hàm Lambda → đảm bảo nhất quán.
+- Service Control Policies (SCPs),  
+- AWS Identity and Access Management (IAM),
 
----
+để cho phép ứng dụng chạy thí nghiệm FIS một cách an toàn trong:
 
-## Front door microservice
-
-- Cung cấp API Gateway để tương tác REST bên ngoài  
-- Xác thực & ủy quyền dựa trên **OIDC** thông qua **Amazon Cognito**  
-- Cơ chế *deduplication* tự quản lý bằng DynamoDB thay vì SNS FIFO vì:
-  1. SNS deduplication TTL chỉ 5 phút
-  2. SNS FIFO yêu cầu SQS FIFO
-  3. Chủ động báo cho sender biết message là bản sao
+- Một tài khoản AWS,  
+- Nhiều tài khoản AWS,  
+- Hoặc nhiều Region (multi-Region).
 
 ---
 
-## Staging ER7 microservice
+## Mở rộng AWS FIS trong AWS Organizations
 
-- Lambda “trigger” đăng ký với pub/sub hub, lọc message theo attribute  
-- Step Functions Express Workflow để chuyển ER7 → JSON  
-- Hai Lambda:
-  1. Sửa format ER7 (newline, carriage return)
-  2. Parsing logic  
-- Kết quả hoặc lỗi được đẩy lại vào pub/sub hub
+AWS Organizations giúp tổ chức các tài khoản AWS theo cấu trúc phân cấp thông qua **Organizational Units (OUs)**.
+
+**Service Control Policies (SCPs)**:  
+Giới hạn quyền truy cập tối đa cho người dùng/role trong tổ chức.
+
+**IAM (trong từng tài khoản)**:  
+Quy định quyền truy cập chi tiết cho AWS FIS và các thành phần của nó.
+
+Cấu trúc ví dụ gồm:
+
+- Root OU  
+- Sandbox OU  
+- Workloads OU (chạy workload)
 
 ---
 
-## Tính năng mới trong giải pháp
+## Chuẩn bị cho các thí nghiệm AWS FIS
 
-### 1. AWS CloudFormation cross-stack references
-Ví dụ *outputs* trong core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+Để tạo thí nghiệm (experiment), bạn cần:
+
+- **Experiment template** (chứa định nghĩa hành động lỗi)  
+- **IAM role** để thực thi các hành động  
+- **Stop conditions**  
+- **Safety levers**  
+- **Permission controls**
+
+AWS khuyến nghị **chuẩn hóa IAM roles** dùng để tạo template và chạy thí nghiệm.
+
+---
+
+## Chuẩn hóa quyền truy cập AWS FIS
+
+Hai persona chính:
+
+### 1. Account Admin
+- Tạo và quản lý SCPs ở cấp OU.  
+- Đảm bảo quyền tối thiểu (least privilege).
+
+### 2. IAM Admin
+- Tạo IAM roles và policies cho FIS.  
+- Policies phải tuân theo SCP.
+
+Hai role tiêu chuẩn cần tạo:
+
+### **AWS-FIS-Experiment-Orchestrator**
+- Cho phép tạo, xóa, chỉnh sửa experiment templates.  
+- Người dùng cuối sẽ assume role này.
+
+### **AWS-FIS-Experiment-Executor**
+- Chỉ được phép chạy các hành động lỗi.  
+- Chỉ AWS FIS service được phép assume role này.  
+
+> **Vai trò Executor rất nhạy cảm** vì có thể thay đổi tài nguyên, nên SCP sẽ đóng vai trò guardrail.
+
+---
+
+## Kịch bản thực tế
+
+Trong mô hình mạng tập trung:
+
+- Network team kiểm soát cấu hình mạng.  
+- Developer có thể không đủ quyền thực hiện FIS network disruption.  
+- Lệnh FIS có thể **thất bại** do thiếu quyền EC2 API.
+
+Vì vậy cần SCP để cho phép chỉ **AWS-FIS-Experiment-Executor** được thực hiện các thay đổi mạng.
+
+---
+
+## SCP mẫu cho Account Admin
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowAccessToASpecificRole",
+      "Effect": "Deny",
+      "Action": [
+        "ec2:CreateNetworkAcl",
+        "ec2:CreateNetworkAclEntry",
+        "ec2:DeleteNetworkAcl",
+        "ec2:CreateTags",
+        "ec2:DescribeNetworkAcls",
+        "ec2:DescribeManagedPrefixLists",
+        "ec2:DescribeSubnets",
+        "ec2:DescribeVpcs",
+        "ec2:ReplaceNetworkAclAssociation",
+        "ec2:GetManagedPrefixListEntries"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "ArnNotEquals": {
+          "aws:PrincipalArn": [
+            "arn:aws:iam::*:role/AWS-FIS-Experiment-Executor"
+          ]
+        }
+      }
+    }
+  ]
+}

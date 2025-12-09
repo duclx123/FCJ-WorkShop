@@ -1,126 +1,137 @@
 ---
 title: "Blog 2"
 date: 2025-01-01
-weight: 1
+weight: 2
 chapter: false
 pre: " <b> 3.2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-# Getting Started with Healthcare Data Lakes: Using Microservices
+# Introducing New Region-Specific Landing Zone Accelerator Deployments on AWS to Support Digital Sovereignty
 
-Data lakes can help hospitals and healthcare facilities turn data into business insights, maintain business continuity, and protect patient privacy. A **data lake** is a centralized, managed, and secure repository to store all your data, both in its raw and processed forms for analysis. Data lakes allow you to break down data silos and combine different types of analytics to gain insights and make better business decisions.
+**Author: Max Peterson — published on 27/05/2025**  
+**Categories: AWS Well-Architected Framework, Compliance, Europe, Foundational (100), Public Sector, Security, Identity & Compliance, Thought Leadership**
 
-This blog post is part of a larger series on getting started with setting up a healthcare data lake. In my final post of the series, *“Getting Started with Healthcare Data Lakes: Diving into Amazon Cognito”*, I focused on the specifics of using Amazon Cognito and Attribute Based Access Control (ABAC) to authenticate and authorize users in the healthcare data lake solution. In this blog, I detail how the solution evolved at a foundational level, including the design decisions I made and the additional features used. You can access the code samples for the solution in this Git repo for reference.
+Customers frequently tell me that they want a simpler path to meet their industry compliance and regulatory requirements across specific geographic regions. Through deep engagements with partners and customers, we have learned that one of the biggest challenges is translating security and compliance requirements into actionable technical controls.
 
----
+At Amazon Web Services (AWS), security is our top priority, and we recognize that protecting your data in a world of evolving regulations, technology, and risks requires collaboration. As we have stated before, security is the foundation of digital sovereignty.
 
-## Architecture Guidance
-
-The main change since the last presentation of the overall architecture is the decomposition of a single service into a set of smaller services to improve maintainability and flexibility. Integrating a large volume of diverse healthcare data often requires specialized connectors for each format; by keeping them encapsulated separately as microservices, we can add, remove, and modify each connector without affecting the others. The microservices are loosely coupled via publish/subscribe messaging centered in what I call the “pub/sub hub.”
-
-This solution represents what I would consider another reasonable sprint iteration from my last post. The scope is still limited to the ingestion and basic parsing of **HL7v2 messages** formatted in **Encoding Rules 7 (ER7)** through a REST interface.
-
-**The solution architecture is now as follows:**
-
-> *Figure 1. Overall architecture; colored boxes represent distinct services.*
+AWS helps organizations develop and evolve their capabilities across security, identity, and compliance into business enablers; this is why we are committed to working with national cybersecurity agencies and regulators to help define and translate their compliance standards into cloud security best practices. We are responding to customer requests for locally tailored approaches that align with regional standards set by domestic authorities.
 
 ---
 
-While the term *microservices* has some inherent ambiguity, certain traits are common:  
-- Small, autonomous, loosely coupled  
-- Reusable, communicating through well-defined interfaces  
-- Specialized to do one thing well  
-- Often implemented in an **event-driven architecture**
+## Architectural Best Practices – Locally Tailored  
+*(Architectural best practice, locally tailored)*
 
-When determining where to draw boundaries between microservices, consider:  
-- **Intrinsic**: technology used, performance, reliability, scalability  
-- **Extrinsic**: dependent functionality, rate of change, reusability  
-- **Human**: team ownership, managing *cognitive load*
+Since its launch in 2022, the **Landing Zone Accelerator on AWS (LZA)** has helped thousands of customers deploy cloud foundations aligned with multiple global frameworks and AWS best practices, including:
 
----
+- **Baseline Informatiebeveiliging Overheid (BIO)** – Netherlands  
+- **Esquema Nacional de Seguridad (ENS)** – Spain  
 
-## Technology Choices and Communication Scope
+AWS is committed to expanding region-specific deployments to help customers meet national, regional, and digital sovereignty requirements.
 
-| Communication scope                       | Technologies / patterns to consider                                                        |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Within a single microservice              | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Between microservices in a single service | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Between services                          | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+In March, we announced a collaboration agreement between the **Federal Office for Information Security (BSI)** and AWS — through which AWS is committed to advancing digital sovereignty and cybersecurity best practices in Germany and across the European Union (EU).
+
+Therefore, we are excited to announce that the next region-specific deployment of the Landing Zone Accelerator on AWS will support workloads in **Germany**, with the **C5-ready Landing Zone Accelerator**, designed to help customers meet the compliance objectives of the **C5 (Cloud Computing Compliance Criteria Catalogue)** in the cloud.
+
+Scheduled for release in **Q3 2025**, this deployment will also be available in the **AWS European Sovereign Cloud**.
 
 ---
 
-## The Pub/Sub Hub
+## C5 Compliance and Partnership with Schellman  
+*(C5 Compliance and Partnership with Schellman)*
 
-Using a **hub-and-spoke** architecture (or message broker) works well with a small number of tightly related microservices.  
-- Each microservice depends only on the *hub*  
-- Inter-microservice connections are limited to the contents of the published message  
-- Reduces the number of synchronous calls since pub/sub is a one-way asynchronous *push*
+The **C5 attestation scheme**, backed by the German government and introduced by BSI in 2016, helps organizations demonstrate operational security capabilities against common cyber threats when using cloud services.  
+AWS has adhered to C5 requirements since the standard was introduced.
 
-Drawback: **coordination and monitoring** are needed to avoid microservices processing the wrong message.
-
----
-
-## Core Microservice
-
-Provides foundational data and communication layer, including:  
-- **Amazon S3** bucket for data  
-- **Amazon DynamoDB** for data catalog  
-- **AWS Lambda** to write messages into the data lake and catalog  
-- **Amazon SNS** topic as the *hub*  
-- **Amazon S3** bucket for artifacts such as Lambda code
-
-> Only allow indirect write access to the data lake through a Lambda function → ensures consistency.
+To help customers prepare for compliance assessments, AWS has partnered with **AWS Global Security & Compliance (GSCA) Partner – Schellman** to provide auditors with deep insights into how the **C5-ready Landing Zone Accelerator** can simplify and accelerate the journey to achieving C5 certification on AWS.
 
 ---
 
-## Front Door Microservice
+## Schellman – A Leading Partner in C5 Assessments  
+*(Schellman: A Leading Partner in C5 Assessments)*
 
-- Provides an API Gateway for external REST interaction  
-- Authentication & authorization based on **OIDC** via **Amazon Cognito**  
-- Self-managed *deduplication* mechanism using DynamoDB instead of SNS FIFO because:  
-  1. SNS deduplication TTL is only 5 minutes  
-  2. SNS FIFO requires SQS FIFO  
-  3. Ability to proactively notify the sender that the message is a duplicate  
+As one of the few companies with deep expertise in C5 assessments, Schellman has conducted dozens of audits across a wide range of customers — from agile startups to global enterprises.
 
----
+> “Our team has seen firsthand how the C5 standard drives transparency and builds trust in cloud services. We are proud to not only help customers understand C5, but also understand how to leverage it to strengthen security and enhance global competitiveness.”  
+> — **Jeff Schiess, Managing Director, Schellman**
 
-## Staging ER7 Microservice
+Lowering barriers to entry — Schellman recognizes that achieving C5 compliance can sometimes feel overwhelming, particularly for organizations new to the framework.
 
-- Lambda “trigger” subscribed to the pub/sub hub, filtering messages by attribute  
-- Step Functions Express Workflow to convert ER7 → JSON  
-- Two Lambdas:  
-  1. Fix ER7 formatting (newline, carriage return)  
-  2. Parsing logic  
-- Result or error is pushed back into the pub/sub hub  
+To support customers, Schellman has conducted assessments on the **LZA on AWS** infrastructure, which is designed to simplify the path to C5 readiness.
+
+> “With the Landing Zone Accelerator, organizations can start with a C5-ready foundation from day one. It is a practical and scalable solution for enterprises that traditionally viewed C5 as complex.”  
+> — **Kristen Wilbur, Principal, Schellman**
 
 ---
 
-## New Features in the Solution
+## Sovereign by Design – Embedding Digital Sovereignty from the Start  
+*(Sovereign by Design: Embedding Digital Sovereignty from the Start)*
 
-### 1. AWS CloudFormation Cross-Stack References
-Example *outputs* in the core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+The Landing Zone Accelerator on AWS automatically deploys hundreds of security capabilities mapped to control requirements from multiple regional compliance frameworks. This saves customers hundreds of hours of planning and security configuration, thanks to a foundation built on the **AWS Well-Architected Security Pillar** and **AWS security best practices**.
+
+Core capabilities that customers need in sovereign-by-design workloads include:
+
+- Meeting compliance requirements  
+- Enforcing verifiable access control and data transfer restrictions  
+- Ensuring autonomy in technology choices  
+- Maintaining resilience to large-scale disruption  
+
+AWS provides detailed guidance for configuring LZA to meet local security, compliance, and digital sovereignty needs, including **control mapping** to domestic regulations and internal security policies.
+
+---
+
+## Data Location and Access Control  
+*(Data Location and Access Control)*
+
+The Landing Zone Accelerator on AWS provides customers with configurable **preventive**, **detective**, and **proactive** controls that help them meet **data residency**, **security**, and **compliance** goals — whether they are:
+
+- government agencies requiring data to remain in a **single AWS Region**, or  
+- multinational enterprises with complex digital sovereignty requirements.
+
+Beyond a secure multi-account environment, LZA establishes a **well-structured multi-account architecture** built on AWS Organizations, enabling:
+
+- Workload isolation and delegated management  
+- Strengthened security and operational efficiency  
+- Consistent enforcement of data residency, access management, and compliance policies  
+
+This allows customers to innovate quickly on the cloud while maintaining a strong security and compliance foundation.
+
+---
+
+## Partners at the Core of the Digital Sovereignty Ecosystem  
+*(Partners at the Core of the Digital Sovereignty Ecosystem)*
+
+AWS recognizes that navigating the digital sovereignty landscape requires collaboration.  
+Through the **AWS Digital Sovereignty Competency**, customers can engage trusted partners with proven experience in designing and implementing sovereignty-aligned architectures while leveraging the full innovation capability of the AWS Cloud.
+
+This program helps partners address challenges across four core pillars:
+
+- Data Residency  
+- Data Protection  
+- Access Control  
+- Survivability  
+
+> “Compliance with standards such as C5 is essential for public sector and regulated industry customers, especially as they prioritize digital sovereignty. The launch of C5 LZA significantly reduces technical complexity, accelerates time to market, and drives innovation.”  
+> — **Boris Hecker, Managing Director, ATOS Germany**
+
+> “Customers in the public sector and highly regulated industries need solutions that both meet regulatory requirements and foster innovation. SVA trusts the Landing Zone Accelerator on AWS as a solution that balances compliance and innovation, combining leading public cloud infrastructure with local legal requirements.”  
+> — **Patrick Glawe, Hyperscaler Lead, SVA**
+
+---
+
+## About the Author
+
+### Max Peterson  
+Max is the **Vice President of AWS Sovereign Cloud**. He leads the global efforts to ensure AWS customers worldwide have access to the broadest set of **sovereignty controls**, **privacy safeguards**, and **advanced security features** on the cloud.
+
+Before his current role, Max served as **Vice President of AWS Worldwide Public Sector (WWPS)**, where he founded and led the **WWPS International Sales division**, focused on supporting organizations in:
+
+- government  
+- education  
+- healthcare  
+- aerospace & satellite  
+- nonprofit  
+
+Max has over **30 years of experience** in the public sector and previously held several **technology leadership** roles before joining Amazon.  
+He holds a **BA in Finance** and an **MBA in MIS** from the University of Maryland.
+
